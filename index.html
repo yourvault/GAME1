@@ -64,12 +64,13 @@
 
         .marquee {
             display: inline-block;
-            animation: marquee 12s linear infinite;
+            padding-left: 100%; /* Start fully off-screen to the right */
+            animation: marquee 15s linear infinite; /* Increased duration for smoother scroll */
         }
 
         @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+            0% { transform: translateX(0); } /* Start at the right edge of the text */
+            100% { transform: translateX(-100%); } /* Move to the left edge of the text */
         }
 
         .container {
