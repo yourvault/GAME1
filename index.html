@@ -102,6 +102,11 @@
             height: auto;
             margin-bottom: 2rem;
             filter: drop-shadow(0 0 10px var(--burnt-orange));
+            transition: transform 0.2s ease; /* Added hover effect */
+        }
+
+        .logo:hover {
+            transform: scale(1.05); /* Subtle scale on hover */
         }
 
         .hero-title {
@@ -139,7 +144,7 @@
             border: 2px solid var(--burnt-orange);
             box-shadow: var(--glow);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Refined hover */
             z-index: 1;
             animation: pulseGlow 2s infinite ease-in-out;
         }
@@ -219,11 +224,12 @@
             padding: 1.5rem;
             border-radius: 10px;
             border: 1px solid rgba(255, 69, 0, 0.2);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added hover */
         }
 
         .faq-item:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02); /* Subtle scale */
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4); /* Light shadow */
         }
 
         .faq-question {
@@ -263,13 +269,14 @@
             padding: 2rem;
             border-radius: 15px;
             border: 1px solid rgba(255, 69, 0, 0.2);
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Enhanced hover */
             max-width: 320px;
             min-height: 300px;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02); /* Combined scale with existing translate */
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4); /* Light shadow */
         }
 
         .feature-icon {
@@ -315,11 +322,12 @@
         .social-links a {
             color: var(--burnt-orange);
             font-size: 1.5rem;
-            transition: color 0.2s ease;
+            transition: transform 0.2s ease, color 0.2s ease; /* Added hover */
         }
 
         .social-links a:hover {
             color: var(--deep-orange);
+            transform: scale(1.2); /* Subtle scale on hover */
         }
 
         @media (max-width: 768px) {
@@ -388,7 +396,7 @@
             <section class="hero" aria-labelledby="main-heading">
                 <div class="hero-content">
                     <img src="https://upload.wikimedia.org/wikipedia/en/d/d1/Gob_logo_new.png" alt="Best FPS Game Logo" class="logo" width="200" height="67">
-                    <h1 id="main-heading" class="hero-title">Best FPS Game!!!</h1>
+                    <h1 id="main-heading" class="hero-title">Best FPS Game</h1>
                     <p class="hero-subtitle">Join the ultimate multiplayer FPS battle now!</p>
                     <button class="download-btn" id="download-button" onclick="_vH()">
                         <span class="fas fa-download"></span>
