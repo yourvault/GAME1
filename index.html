@@ -258,16 +258,17 @@
         }
 
         .faq-answer {
-            max-height: 0;
+            max-height: 200px; /* Initially open */
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.1s ease;
             font-size: 1rem;
             opacity: 0.9;
+            padding-top: 0.75rem;
         }
 
-        .faq-answer.active {
-            max-height: 200px; /* Adjust based on content */
-            padding-top: 0.75rem;
+        .faq-answer.closed {
+            max-height: 0;
+            padding-top: 0;
         }
 
         .feature-item {
@@ -407,7 +408,7 @@
                 <h2 id="faq-heading" class="faq-heading">Frequently Asked Questions</h2>
                 <div class="faq-container">
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                        <button class="faq-question" aria-expanded="true" aria-controls="faq1">
                             <span>How do I download Best FPS Game?</span>
                             <i class="fas fa-chevron-down faq-icon"></i>
                         </button>
@@ -416,7 +417,7 @@
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                        <button class="faq-question" aria-expanded="true" aria-controls="faq2">
                             <span>What happens after I click "Download Now"?</span>
                             <i class="fas fa-chevron-down faq-icon"></i>
                         </button>
@@ -425,7 +426,7 @@
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                        <button class="faq-question" aria-expanded="true" aria-controls="faq3">
                             <span>What are the challenges?</span>
                             <i class="fas fa-chevron-down faq-icon"></i>
                         </button>
@@ -434,7 +435,7 @@
                         </div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+                        <button class="faq-question" aria-expanded="true" aria-controls="faq4">
                             <span>What happens after completing a challenge?</span>
                             <i class="fas fa-chevron-down faq-icon"></i>
                         </button>
@@ -536,24 +537,15 @@
 
             startPulseAnimation();
 
-            // FAQ Accordion Functionality
+            // FAQ Accordion Functionality (Initially Open)
             const faqQuestions = document.querySelectorAll('.faq-question');
             faqQuestions.forEach(question => {
                 question.addEventListener('click', () => {
                     const answer = question.nextElementSibling;
                     const isOpen = question.getAttribute('aria-expanded') === 'true';
 
-                    // Close all other FAQs
-                    faqQuestions.forEach(q => {
-                        if (q !== question) {
-                            q.setAttribute('aria-expanded', 'false');
-                            q.nextElementSibling.classList.remove('active');
-                        }
-                    });
-
-                    // Toggle current FAQ
                     question.setAttribute('aria-expanded', !isOpen);
-                    answer.classList.toggle('active');
+                    answer.classList.toggle('closed');
                 });
             });
 
