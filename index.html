@@ -145,12 +145,10 @@
             box-shadow: var(--glow);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            z-index: 1;
-            /* Animation removed from here */
         }
 
         .download-btn.pulse {
-            animation: pulseGlow 2s ease-in-out; /* Class to trigger animation */
+            animation: pulseGlow 2s ease-in-out;
         }
 
         .download-btn::before {
@@ -200,11 +198,11 @@
             transform: rotate(20deg);
         }
 
-        .faq {
+        .faq, .features {
             padding: 5rem 0;
         }
 
-        .faq-heading {
+        .faq-heading, .features-heading {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
@@ -216,14 +214,14 @@
             margin-bottom: 3rem;
         }
 
-        .faq-container {
+        .faq-container, .features-container {
             display: grid;
             gap: 1.5rem;
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .faq-item {
+        .faq-item, .feature-item {
             background: var(--dark-steel);
             padding: 1.5rem;
             border-radius: 10px;
@@ -231,56 +229,52 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .faq-item:hover {
+        .faq-item:hover, .feature-item:hover {
             transform: scale(1.02);
             box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
         }
 
         .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: none;
+            border: none;
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
             color: var(--burnt-orange);
-            margin-bottom: 0.75rem;
+            cursor: pointer;
+            padding: 0;
+            text-align: left;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
         }
 
         .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.1s ease;
             font-size: 1rem;
             opacity: 0.9;
         }
 
-        .features {
-            padding: 5rem 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-            gap: 2rem;
-            place-items: center;
+        .faq-answer.active {
+            max-height: 200px; /* Adjust based on content */
+            padding-top: 0.75rem;
         }
 
-        .features-heading {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            background: var(--dark-steel);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 69, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            max-width: 320px;
-            min-height: 300px;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
         }
 
         .feature-icon {
@@ -354,7 +348,6 @@
 
             .faq, .features {
                 padding: 3rem 0;
-                gap: 1.5rem;
             }
 
             .faq-heading, .features-heading {
@@ -414,45 +407,67 @@
                 <h2 id="faq-heading" class="faq-heading">Frequently Asked Questions</h2>
                 <div class="faq-container">
                     <div class="faq-item">
-                        <h3 class="faq-question">How do I download Best FPS Game?</h3>
-                        <p class="faq-answer">Once you're on the website, locate the prominent "Download Now" button and click it to begin the process.</p>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+                            <span>How do I download Best FPS Game?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq1">
+                            <p>Once you're on the website, locate the prominent "Download Now" button and click it to begin the process.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-question">What happens after I click "Download Now"?</h3>
-                        <p class="faq-answer">A small white box will appear with the message, "Are You Human? Let’s Find Out!" Click "Start Challenge" to proceed.</p>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+                            <span>What happens after I click "Download Now"?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq2">
+                            <p>A small white box will appear with the message, "Are You Human? Let’s Find Out!" Click "Start Challenge" to proceed.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-question">What are the challenges?</h3>
-                        <p class="faq-answer">After pressing "Start Challenge," three different challenges will be presented. Choose one and complete it fully to verify you're not a bot.</p>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+                            <span>What are the challenges?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq3">
+                            <p>After pressing "Start Challenge," three different challenges will be presented. Choose one and complete it fully to verify you're not a bot.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
-                        <h3 class="faq-question">What happens after completing a challenge?</h3>
-                        <p class="faq-answer">Once you finish the challenge, you'll be redirected to a new page where you can download the game with a single click.</p>
+                        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+                            <span>What happens after completing a challenge?</span>
+                            <i class="fas fa-chevron-down faq-icon"></i>
+                        </button>
+                        <div class="faq-answer" id="faq4">
+                            <p>Once you finish the challenge, you'll be redirected to a new page where you can download the game with a single click.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section class="features" aria-labelledby="features-heading">
                 <h2 id="features-heading" class="features-heading">Game Features</h2>
-                <div class="feature-card">
-                    <i class="fas fa-explosion feature-icon"></i>
-                    <h3 class="feature-title">Intense Battles</h3>
-                    <p class="feature-description">Fast-paced multiplayer action awaits</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-crosshairs feature-icon"></i>
-                    <h3 class="feature-title">Precision Shooting</h3>
-                    <p class="feature-description">Master your aim with intuitive controls</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-eye feature-icon"></i>
-                    <h3 class="feature-title">Stunning Graphics</h3>
-                    <p class="feature-description">Immersive visuals for epic firefights</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-user-group feature-icon"></i>
-                    <h3 class="feature-title">Team Play</h3>
-                    <p class="feature-description">Squad up and dominate the battlefield</p>
+                <div class="features-container">
+                    <div class="feature-item">
+                        <i class="fas fa-explosion feature-icon"></i>
+                        <h3 class="feature-title">Intense Battles</h3>
+                        <p class="feature-description">Fast-paced multiplayer action awaits</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-crosshairs feature-icon"></i>
+                        <h3 class="feature-title">Precision Shooting</h3>
+                        <p class="feature-description">Master your aim with intuitive controls</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-eye feature-icon"></i>
+                        <h3 class="feature-title">Stunning Graphics</h3>
+                        <p class="feature-description">Immersive visuals for epic firefights</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-group feature-icon"></i>
+                        <h3 class="feature-title">Team Play</h3>
+                        <p class="feature-description">Squad up and dominate the battlefield</p>
+                    </div>
                 </div>
             </section>
         </main>
@@ -490,7 +505,7 @@
                 downloadBtn.style.transition = 'all 0.3s ease';
                 downloadBtn.style.transform = 'scale(0.95)';
                 downloadBtn.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.3)';
-                downloadBtn.classList.remove('pulse'); // Remove animation during processing
+                downloadBtn.classList.remove('pulse');
                 downloadBtn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Processing...';
 
                 setTimeout(() => {
@@ -499,29 +514,48 @@
                     downloadBtn.innerHTML = '<span class="fas fa-download"></span> Download Now <span class="sr-only">Best FPS Game latest version</span>';
                     downloadBtn.disabled = false;
                     isDownloading = false;
-                    startPulseAnimation(); // Restart animation after processing
+                    startPulseAnimation();
                     console.log('Download button clicked - locker triggered');
                 }, 1000);
             };
 
             downloadBtn.addEventListener('click', handleDownload);
 
-            // Function to trigger pulse animation every 5 seconds
             function startPulseAnimation() {
                 const pulseInterval = setInterval(() => {
-                    if (!isDownloading) { // Only pulse if not downloading
+                    if (!isDownloading) {
                         downloadBtn.classList.add('pulse');
                         setTimeout(() => {
                             downloadBtn.classList.remove('pulse');
-                        }, 2000); // Animation duration matches @keyframes (2s)
+                        }, 2000);
                     }
-                }, 5000); // Every 5 seconds
+                }, 5000);
 
-                // Cleanup on unload
                 window.addEventListener('unload', () => clearInterval(pulseInterval));
             }
 
-            startPulseAnimation(); // Start the periodic animation
+            startPulseAnimation();
+
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isOpen = question.getAttribute('aria-expanded') === 'true';
+
+                    // Close all other FAQs
+                    faqQuestions.forEach(q => {
+                        if (q !== question) {
+                            q.setAttribute('aria-expanded', 'false');
+                            q.nextElementSibling.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    question.setAttribute('aria-expanded', !isOpen);
+                    answer.classList.toggle('active');
+                });
+            });
 
             const observerOptions = {
                 threshold: 0.1,
@@ -537,7 +571,7 @@
                 });
             }, observerOptions);
 
-            document.querySelectorAll('.feature-card, .faq-item').forEach(item => observer.observe(item));
+            document.querySelectorAll('.feature-item, .faq-item').forEach(item => observer.observe(item));
 
             particlesJS('particles-js', {
                 particles: {
