@@ -13,11 +13,11 @@
     <style>
         :root {
             --burnt-orange: #ff4500;
-            --deep-orange: #8b2500; /* New shade replacing gunmetal gray */
+            --deep-orange: #8b2500;
             --charcoal-black: #1a1a1a;
             --dark-steel: rgba(47, 79, 79, 0.9);
             --off-white: #dcdcdc;
-            --gradient: linear-gradient(135deg, var(--burnt-orange), var(--deep-orange)); /* Updated gradient */
+            --gradient: linear-gradient(135deg, var(--burnt-orange), var(--deep-orange));
             --glow: 0 0 20px rgba(255, 69, 0, 0.6);
         }
 
@@ -51,7 +51,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: var(--deep-orange); /* Updated to deep orange */
+            background: var(--deep-orange);
             color: var(--off-white);
             padding: 0.75rem;
             font-size: 1rem;
@@ -108,7 +108,7 @@
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(2.8rem, 8vw, 5rem);
             font-weight: 700;
-            background: var(--gradient); /* Updated gradient */
+            background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -127,7 +127,7 @@
             align-items: center;
             gap: 1rem;
             padding: 1.3rem 4rem;
-            background: var(--gradient); /* Updated gradient */
+            background: var(--gradient);
             color: var(--charcoal-black);
             text-decoration: none;
             border-radius: 50px;
@@ -200,7 +200,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
-            background: var(--gradient); /* Updated gradient */
+            background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -244,6 +244,18 @@
             grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
             gap: 2rem;
             place-items: center;
+        }
+
+        .features-heading {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 3rem;
         }
 
         .feature-card {
@@ -307,7 +319,7 @@
         }
 
         .social-links a:hover {
-            color: var(--deep-orange); /* Updated hover color */
+            color: var(--deep-orange);
         }
 
         @media (max-width: 768px) {
@@ -333,7 +345,7 @@
                 gap: 1.5rem;
             }
 
-            .faq-heading {
+            .faq-heading, .features-heading {
                 font-size: 2rem;
             }
 
@@ -376,7 +388,7 @@
             <section class="hero" aria-labelledby="main-heading">
                 <div class="hero-content">
                     <img src="https://upload.wikimedia.org/wikipedia/en/d/d1/Gob_logo_new.png" alt="Best FPS Game Logo" class="logo" width="200" height="67">
-                    <h1 id="main-heading" class="hero-title">Best FPS Game</h1>
+                    <h1 id="main-heading" class="hero-title">Best FPS Game!!</h1>
                     <p class="hero-subtitle">Join the ultimate multiplayer FPS battle now!</p>
                     <button class="download-btn" id="download-button" onclick="_vH()">
                         <span class="fas fa-download"></span>
@@ -409,7 +421,7 @@
             </section>
 
             <section class="features" aria-labelledby="features-heading">
-                <h2 id="features-heading" class="sr-only">Key Features</h2>
+                <h2 id="features-heading" class="features-heading">Game Features</h2>
                 <div class="feature-card">
                     <i class="fas fa-explosion feature-icon"></i>
                     <h3 class="feature-title">Intense Battles</h3>
