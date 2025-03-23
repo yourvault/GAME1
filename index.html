@@ -12,13 +12,13 @@
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         :root {
-            --neon-blue: #00ddeb;
-            --neon-pink: #ff007a;
-            --dark-bg: #0d0d1a;
-            --card-bg: rgba(20, 20, 40, 0.9);
-            --text-light: #e0e0e0;
-            --gradient: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
-            --glow: 0 0 20px rgba(0, 221, 235, 0.6);
+            --burnt-orange: #ff4500;
+            --deep-orange: #8b2500; /* New shade replacing gunmetal gray */
+            --charcoal-black: #1a1a1a;
+            --dark-steel: rgba(47, 79, 79, 0.9);
+            --off-white: #dcdcdc;
+            --gradient: linear-gradient(135deg, var(--burnt-orange), var(--deep-orange)); /* Updated gradient */
+            --glow: 0 0 20px rgba(255, 69, 0, 0.6);
         }
 
         * {
@@ -29,8 +29,8 @@
         }
 
         body {
-            background: var(--dark-bg);
-            color: var(--text-light);
+            background: var(--charcoal-black);
+            color: var(--off-white);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
@@ -51,8 +51,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: var(--neon-pink);
-            color: var(--dark-bg);
+            background: var(--deep-orange); /* Updated to deep orange */
+            color: var(--off-white);
             padding: 0.75rem;
             font-size: 1rem;
             font-weight: 700;
@@ -101,14 +101,14 @@
             width: 200px;
             height: auto;
             margin-bottom: 2rem;
-            filter: drop-shadow(0 0 10px var(--neon-blue));
+            filter: drop-shadow(0 0 10px var(--burnt-orange));
         }
 
         .hero-title {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(2.8rem, 8vw, 5rem);
             font-weight: 700;
-            background: var(--gradient);
+            background: var(--gradient); /* Updated gradient */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -117,7 +117,7 @@
 
         .hero-subtitle {
             font-size: clamp(1.1rem, 3vw, 1.5rem);
-            color: var(--text-light);
+            color: var(--off-white);
             margin-bottom: 2.5rem;
             opacity: 0.85;
         }
@@ -127,8 +127,8 @@
             align-items: center;
             gap: 1rem;
             padding: 1.3rem 4rem;
-            background: var(--gradient);
-            color: var(--dark-bg);
+            background: var(--gradient); /* Updated gradient */
+            color: var(--charcoal-black);
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.4rem;
@@ -136,7 +136,7 @@
             font-family: 'Orbitron', sans-serif;
             position: relative;
             overflow: hidden;
-            border: 2px solid var(--neon-blue);
+            border: 2px solid var(--burnt-orange);
             box-shadow: var(--glow);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -165,7 +165,7 @@
 
         .download-btn:hover {
             transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 221, 235, 0.8);
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
         }
 
         .download-btn:active {
@@ -178,7 +178,7 @@
                 transform: scale(1);
             }
             50% { 
-                box-shadow: 0 0 30px rgba(0, 221, 235, 0.9);
+                box-shadow: 0 0 30px rgba(255, 69, 0, 0.9);
                 transform: scale(1.02);
             }
         }
@@ -191,7 +191,6 @@
             transform: rotate(20deg);
         }
 
-        /* FAQ Section Styles */
         .faq {
             padding: 5rem 0;
         }
@@ -201,7 +200,7 @@
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
-            background: var(--gradient);
+            background: var(--gradient); /* Updated gradient */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -216,10 +215,10 @@
         }
 
         .faq-item {
-            background: var(--card-bg);
+            background: var(--dark-steel);
             padding: 1.5rem;
             border-radius: 10px;
-            border: 1px solid rgba(0, 221, 235, 0.2);
+            border: 1px solid rgba(255, 69, 0, 0.2);
             transition: transform 0.2s ease;
         }
 
@@ -230,7 +229,7 @@
         .faq-question {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.2rem;
-            color: var(--neon-blue);
+            color: var(--burnt-orange);
             margin-bottom: 0.75rem;
         }
 
@@ -248,10 +247,10 @@
         }
 
         .feature-card {
-            background: var(--card-bg);
+            background: var(--dark-steel);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(0, 221, 235, 0.2);
+            border: 1px solid rgba(255, 69, 0, 0.2);
             transition: transform 0.2s ease;
             max-width: 320px;
             min-height: 300px;
@@ -263,14 +262,14 @@
 
         .feature-icon {
             font-size: 3rem;
-            color: var(--neon-blue);
+            color: var(--burnt-orange);
             margin-bottom: 1.5rem;
         }
 
         .feature-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
-            color: var(--neon-blue);
+            color: var(--burnt-orange);
             margin-bottom: 1rem;
         }
 
@@ -281,9 +280,9 @@
 
         .footer {
             padding: 2rem 0;
-            background: rgba(13, 13, 26, 0.9);
+            background: rgba(26, 26, 26, 0.9);
             text-align: center;
-            border-top: 1px solid var(--neon-blue);
+            border-top: 1px solid var(--burnt-orange);
             position: relative;
             z-index: 2;
         }
@@ -302,13 +301,13 @@
         }
 
         .social-links a {
-            color: var(--neon-blue);
+            color: var(--burnt-orange);
             font-size: 1.5rem;
             transition: color 0.2s ease;
         }
 
         .social-links a:hover {
-            color: var(--neon-pink);
+            color: var(--deep-orange); /* Updated hover color */
         }
 
         @media (max-width: 768px) {
@@ -387,7 +386,6 @@
                 </div>
             </section>
 
-            <!-- FAQ Section -->
             <section class="faq" aria-labelledby="faq-heading">
                 <h2 id="faq-heading" class="faq-heading">Frequently Asked Questions</h2>
                 <div class="faq-container">
@@ -413,7 +411,7 @@
             <section class="features" aria-labelledby="features-heading">
                 <h2 id="features-heading" class="sr-only">Key Features</h2>
                 <div class="feature-card">
-                    <i class="fas fa-bullseye feature-icon"></i>
+                    <i class="fas fa-explosion feature-icon"></i>
                     <h3 class="feature-title">Intense Battles</h3>
                     <p class="feature-description">Fast-paced multiplayer action awaits</p>
                 </div>
@@ -423,12 +421,12 @@
                     <p class="feature-description">Master your aim with intuitive controls</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-paint-brush feature-icon"></i>
+                    <i class="fas fa-eye feature-icon"></i>
                     <h3 class="feature-title">Stunning Graphics</h3>
                     <p class="feature-description">Immersive visuals for epic firefights</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-users feature-icon"></i>
+                    <i class="fas fa-user-group feature-icon"></i>
                     <h3 class="feature-title">Team Play</h3>
                     <p class="feature-description">Squad up and dominate the battlefield</p>
                 </div>
@@ -467,13 +465,13 @@
                 downloadBtn.disabled = true;
                 downloadBtn.style.transition = 'all 0.3s ease';
                 downloadBtn.style.transform = 'scale(0.95)';
-                downloadBtn.style.boxShadow = '0 0 10px rgba(0, 221, 235, 0.3)';
+                downloadBtn.style.boxShadow = '0 0 10px rgba(255, 69, 0, 0.3)';
                 downloadBtn.style.animation = 'none';
                 downloadBtn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Processing...';
 
                 setTimeout(() => {
                     downloadBtn.style.transform = 'scale(1)';
-                    downloadBtn.style.boxShadow = '0 0 20px rgba(0, 221, 235, 0.6)';
+                    downloadBtn.style.boxShadow = '0 0 20px rgba(255, 69, 0, 0.6)';
                     downloadBtn.innerHTML = '<span class="fas fa-download"></span> Download Now <span class="sr-only">Best FPS Game latest version</span>';
                     downloadBtn.style.animation = 'pulseGlow 2s infinite ease-in-out';
                     downloadBtn.disabled = false;
@@ -506,7 +504,7 @@
                         value: Math.min(30, window.innerWidth / 20),
                         density: { enable: true, value_area: 800 } 
                     },
-                    color: { value: '#00ddeb' },
+                    color: { value: '#ff4500' },
                     shape: { type: 'circle' },
                     opacity: { value: 0.5, random: true },
                     size: { value: 3, random: true },
