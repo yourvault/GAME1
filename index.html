@@ -18,7 +18,7 @@
             --dark-steel: rgba(47, 79, 79, 0.9);
             --off-white: #dcdcdc;
             --gradient: linear-gradient(135deg, var(--burnt-orange), var(--deep-orange));
-            --glow: 0 0 20px rgba(255, 69, 0, 0.6);
+            --glow: 0 0 20px rgba(255, 255, 255, 0.6); /* Updated to white glow */
         }
 
         * {
@@ -102,11 +102,11 @@
             height: auto;
             margin-bottom: 2rem;
             filter: drop-shadow(0 0 10px var(--burnt-orange));
-            transition: transform 0.2s ease; /* Added hover effect */
+            transition: transform 0.2s ease;
         }
 
         .logo:hover {
-            transform: scale(1.05); /* Subtle scale on hover */
+            transform: scale(1.05);
         }
 
         .hero-title {
@@ -142,9 +142,9 @@
             position: relative;
             overflow: hidden;
             border: 2px solid var(--burnt-orange);
-            box-shadow: var(--glow);
+            box-shadow: var(--glow); /* Uses white glow */
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Refined hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 1;
             animation: pulseGlow 2s infinite ease-in-out;
         }
@@ -170,7 +170,7 @@
 
         .download-btn:hover {
             transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); /* White glow on hover */
         }
 
         .download-btn:active {
@@ -179,11 +179,11 @@
 
         @keyframes pulseGlow {
             0%, 100% { 
-                box-shadow: var(--glow);
+                box-shadow: var(--glow); /* White glow */
                 transform: scale(1);
             }
             50% { 
-                box-shadow: 0 0 30px rgba(255, 69, 0, 0.9);
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); /* White glow peak */
                 transform: scale(1.02);
             }
         }
@@ -224,12 +224,12 @@
             padding: 1.5rem;
             border-radius: 10px;
             border: 1px solid rgba(255, 69, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Added hover */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .faq-item:hover {
-            transform: scale(1.02); /* Subtle scale */
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4); /* Light shadow */
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
         }
 
         .faq-question {
@@ -269,14 +269,14 @@
             padding: 2rem;
             border-radius: 15px;
             border: 1px solid rgba(255, 69, 0, 0.2);
-            transition: transform 0.2s ease, box-shadow 0.2s ease; /* Enhanced hover */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             max-width: 320px;
             min-height: 300px;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px) scale(1.02); /* Combined scale with existing translate */
-            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4); /* Light shadow */
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
         }
 
         .feature-icon {
@@ -322,12 +322,12 @@
         .social-links a {
             color: var(--burnt-orange);
             font-size: 1.5rem;
-            transition: transform 0.2s ease, color 0.2s ease; /* Added hover */
+            transition: transform 0.2s ease, color 0.2s ease;
         }
 
         .social-links a:hover {
             color: var(--deep-orange);
-            transform: scale(1.2); /* Subtle scale on hover */
+            transform: scale(1.2);
         }
 
         @media (max-width: 768px) {
@@ -485,13 +485,13 @@
                 downloadBtn.disabled = true;
                 downloadBtn.style.transition = 'all 0.3s ease';
                 downloadBtn.style.transform = 'scale(0.95)';
-                downloadBtn.style.boxShadow = '0 0 10px rgba(255, 69, 0, 0.3)';
+                downloadBtn.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.3)'; /* Adjusted for white glow */
                 downloadBtn.style.animation = 'none';
                 downloadBtn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Processing...';
 
                 setTimeout(() => {
                     downloadBtn.style.transform = 'scale(1)';
-                    downloadBtn.style.boxShadow = '0 0 20px rgba(255, 69, 0, 0.6)';
+                    downloadBtn.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.6)'; /* White glow */
                     downloadBtn.innerHTML = '<span class="fas fa-download"></span> Download Now <span class="sr-only">Best FPS Game latest version</span>';
                     downloadBtn.style.animation = 'pulseGlow 2s infinite ease-in-out';
                     downloadBtn.disabled = false;
