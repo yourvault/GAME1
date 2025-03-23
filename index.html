@@ -18,7 +18,7 @@
             --dark-steel: rgba(47, 79, 79, 0.9);
             --off-white: #dcdcdc;
             --gradient: linear-gradient(135deg, var(--burnt-orange), var(--deep-orange));
-            --glow: 0 0 20px rgba(255, 255, 255, 0.6); /* Updated to white glow */
+            --glow: 0 0 20px rgba(255, 255, 255, 0.6);
         }
 
         * {
@@ -142,11 +142,15 @@
             position: relative;
             overflow: hidden;
             border: 2px solid var(--burnt-orange);
-            box-shadow: var(--glow); /* Uses white glow */
+            box-shadow: var(--glow);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             z-index: 1;
-            animation: pulseGlow 2s infinite ease-in-out;
+            /* Animation removed from here */
+        }
+
+        .download-btn.pulse {
+            animation: pulseGlow 2s ease-in-out; /* Class to trigger animation */
         }
 
         .download-btn::before {
@@ -170,7 +174,7 @@
 
         .download-btn:hover {
             transform: scale(1.05) translateY(-3px);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); /* White glow on hover */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
         }
 
         .download-btn:active {
@@ -179,11 +183,11 @@
 
         @keyframes pulseGlow {
             0%, 100% { 
-                box-shadow: var(--glow); /* White glow */
+                box-shadow: var(--glow);
                 transform: scale(1);
             }
             50% { 
-                box-shadow: 0 0 30px rgba(255, 255, 255, 0.9); /* White glow peak */
+                box-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
                 transform: scale(1.02);
             }
         }
@@ -485,22 +489,39 @@
                 downloadBtn.disabled = true;
                 downloadBtn.style.transition = 'all 0.3s ease';
                 downloadBtn.style.transform = 'scale(0.95)';
-                downloadBtn.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.3)'; /* Adjusted for white glow */
-                downloadBtn.style.animation = 'none';
+                downloadBtn.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.3)';
+                downloadBtn.classList.remove('pulse'); // Remove animation during processing
                 downloadBtn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Processing...';
 
                 setTimeout(() => {
                     downloadBtn.style.transform = 'scale(1)';
-                    downloadBtn.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.6)'; /* White glow */
+                    downloadBtn.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.6)';
                     downloadBtn.innerHTML = '<span class="fas fa-download"></span> Download Now <span class="sr-only">Best FPS Game latest version</span>';
-                    downloadBtn.style.animation = 'pulseGlow 2s infinite ease-in-out';
                     downloadBtn.disabled = false;
                     isDownloading = false;
+                    startPulseAnimation(); // Restart animation after processing
                     console.log('Download button clicked - locker triggered');
                 }, 1000);
             };
 
             downloadBtn.addEventListener('click', handleDownload);
+
+            // Function to trigger pulse animation every 5 seconds
+            function startPulseAnimation() {
+                const pulseInterval = setInterval(() => {
+                    if (!isDownloading) { // Only pulse if not downloading
+                        downloadBtn.classList.add('pulse');
+                        setTimeout(() => {
+                            downloadBtn.classList.remove('pulse');
+                        }, 2000); // Animation duration matches @keyframes (2s)
+                    }
+                }, 5000); // Every 5 seconds
+
+                // Cleanup on unload
+                window.addEventListener('unload', () => clearInterval(pulseInterval));
+            }
+
+            startPulseAnimation(); // Start the periodic animation
 
             const observerOptions = {
                 threshold: 0.1,
