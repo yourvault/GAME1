@@ -165,7 +165,7 @@
         }
 
         .download-btn.wiggle {
-            animation: wiggle 0.6s ease-in-out; /* Wiggle animation triggered by class */
+            animation: wiggle 0.6s ease-in-out;
         }
 
         .download-btn.pulse {
@@ -395,6 +395,8 @@
             border-top: 2px solid var(--burnt-orange);
             position: relative;
             z-index: 2;
+            width: 100%; /* Full width */
+            margin: 0; /* Remove any default margins */
         }
 
         .footer-container {
@@ -599,18 +601,18 @@
                 </div>
             </section>
         </main>
-
-        <footer class="footer">
-            <div class="footer-container">
-                <p>© 2025 Best FPS Game. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://infinitetools.site/BESTFPSGAME/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://infinitetools.site/BESTFPSGAME/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://infinitetools.site/BESTFPSGAME/" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </footer>
     </div>
+    <!-- Moved footer outside container for full-width -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>© 2025 Best FPS Game. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://infinitetools.site/BESTFPSGAME/" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://infinitetools.site/BESTFPSGAME/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://infinitetools.site/BESTFPSGAME/" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         const debounce = (func, wait) => {
@@ -655,9 +657,9 @@
                         downloadBtn.classList.add('wiggle');
                         setTimeout(() => {
                             downloadBtn.classList.remove('wiggle');
-                        }, 600); // Matches wiggle animation duration
+                        }, 600);
                     }
-                }, 3000); // Triggers every 3 seconds
+                }, 3000);
 
                 window.addEventListener('unload', () => clearInterval(wiggleInterval));
             }
