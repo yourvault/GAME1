@@ -10,6 +10,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+  // Detect if the user is coming from a social media in-app browser
+  // This part is tricky and may not work for all cases
+  if (navigator.userAgent.match(/Instagram/i) || navigator.userAgent.match(/Facebook/i)) {
+    // Attempt to redirect to the default browser
+    // This might not work as intended but can be used for other purposes
+    window.location.replace("https://infinitetools.site/GAME1/");
+  } else {
+    // Normal page load
+  }
+</script>
+
     <style>
         :root {
             --burnt-orange: #ff4500;
