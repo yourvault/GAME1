@@ -164,8 +164,12 @@
             letter-spacing: 1px;
         }
 
+        .download-btn.wiggle {
+            animation: wiggle 0.6s ease-in-out; /* Wiggle animation triggered by class */
+        }
+
         .download-btn.pulse {
-            animation: pulseGlow 2s ease-in-out infinite;
+            animation: pulseGlow 1.5s ease-in-out infinite;
         }
 
         .download-btn::before {
@@ -182,20 +186,48 @@
             z-index: 0;
         }
 
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 69, 0, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .download-btn:hover::before {
             width: 400%;
             height: 400%;
         }
 
+        .download-btn:hover::after {
+            opacity: 1;
+            animation: shine 1.5s infinite;
+        }
+
         .download-btn:hover {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 0 40px rgba(255, 69, 0, 0.8), var(--soft-shadow);
+            transform: scale(1.1) translateY(-5px) rotate(1deg);
+            box-shadow: 0 0 50px rgba(255, 69, 0, 0.9), var(--soft-shadow);
             color: var(--charcoal-black);
         }
 
         .download-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.95);
             box-shadow: var(--glow);
+            transition: transform 0.2s ease;
+        }
+
+        @keyframes wiggle {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+            75% { transform: rotate(1deg); }
+            100% { transform: rotate(0deg); }
         }
 
         @keyframes pulseGlow {
@@ -204,9 +236,14 @@
                 transform: scale(1);
             }
             50% { 
-                box-shadow: 0 0 40px rgba(255, 69, 0, 0.9), var(--soft-shadow);
-                transform: scale(1.05);
+                box-shadow: 0 0 40px rgba(255, 69, 0, 1), var(--soft-shadow);
+                transform: scale(1.06);
             }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
         .download-btn .fas {
@@ -215,7 +252,7 @@
         }
 
         .download-btn:hover .fas {
-            transform: rotate(360deg);
+            transform: scale(1.2) rotate(360deg);
         }
 
         .faq, .features {
@@ -596,7 +633,7 @@
                 downloadBtn.style.transition = 'all 0.3s ease';
                 downloadBtn.style.transform = 'scale(0.95)';
                 downloadBtn.style.boxShadow = '0 0 10px rgba(255, 69, 0, 0.3)';
-                downloadBtn.classList.remove('pulse');
+                downloadBtn.classList.remove('wiggle', 'pulse');
                 downloadBtn.innerHTML = '<span class="fas fa-spinner fa-spin"></span> Processing...';
 
                 setTimeout(() => {
@@ -605,27 +642,27 @@
                     downloadBtn.innerHTML = '<span class="fas fa-download"></span> Download Now <span class="sr-only">Best FPS Game latest version</span>';
                     downloadBtn.disabled = false;
                     isDownloading = false;
-                    startPulseAnimation();
+                    startWiggleAnimation();
                     console.log('Download button clicked - locker triggered');
                 }, 1000);
             };
 
             downloadBtn.addEventListener('click', handleDownload);
 
-            function startPulseAnimation() {
-                const pulseInterval = setInterval(() => {
+            function startWiggleAnimation() {
+                const wiggleInterval = setInterval(() => {
                     if (!isDownloading) {
-                        downloadBtn.classList.add('pulse');
+                        downloadBtn.classList.add('wiggle');
                         setTimeout(() => {
-                            downloadBtn.classList.remove('pulse');
-                        }, 2000);
+                            downloadBtn.classList.remove('wiggle');
+                        }, 600); // Matches wiggle animation duration
                     }
-                }, 4000);
+                }, 3000); // Triggers every 3 seconds
 
-                window.addEventListener('unload', () => clearInterval(pulseInterval));
+                window.addEventListener('unload', () => clearInterval(wiggleInterval));
             }
 
-            startPulseAnimation();
+            startWiggleAnimation();
 
             // FAQ Accordion Functionality (Initially Closed)
             const faqQuestions = document.querySelectorAll('.faq-question');
