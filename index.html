@@ -57,24 +57,24 @@
             width: 100%;
             background: var(--gradient);
             color: var(--off-white);
-            padding: 0.5rem 1rem; /* Reduced padding for a slimmer look */
-            font-size: 0.9rem; /* Smaller font size */
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
             font-weight: 700;
             z-index: 1000;
             box-shadow: var(--soft-shadow);
             font-family: 'Orbitron', sans-serif;
             backdrop-filter: blur(5px);
-            transition: opacity 0.3s ease; /* Added for hover effect */
+            transition: opacity 0.3s ease;
         }
 
         .browser-notice:hover {
-            opacity: 0.85; /* Subtle fade on hover */
+            opacity: 0.85;
         }
 
         .marquee {
             display: inline-block;
             padding-left: 100%;
-            animation: marquee 15s linear infinite; /* Slower, smoother animation */
+            animation: marquee 15s linear infinite;
             white-space: nowrap;
         }
 
@@ -87,7 +87,7 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
-            margin-top: 3rem; /* Adjusted to account for slimmer notice */
+            margin-top: 3rem;
             position: relative;
             z-index: 2;
         }
@@ -99,18 +99,6 @@
             justify-content: center;
             padding: 5rem 0;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 69, 0, 0.15) 0%, transparent 70%);
-            z-index: -1;
         }
 
         .hero-content {
@@ -426,7 +414,7 @@
             }
 
             .browser-notice {
-                font-size: 0.8rem; /* Even smaller on mobile */
+                font-size: 0.8rem;
                 padding: 0.4rem 1rem;
             }
 
