@@ -10,6 +10,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script type="text/javascript">
+  // Function to detect if we're in a social media in-app browser
+  function isSocialMediaInAppBrowser() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    // Common identifiers for social media in-app browsers
+    const socialMediaPatterns = [
+      "FB_IAB",        // Facebook
+      "FBAN",          // Facebook (alternative)
+      "Instagram",     // Instagram
+      "Twitter",       // Twitter
+      "Line",          // Line
+      "WhatsApp",      // WhatsApp
+      "Snapchat",      // Snapchat
+      "Pinterest"      // Pinterest
+    ];
+    return socialMediaPatterns.some(pattern => ua.includes(pattern));
+  }
+
+  // Function to force open in external browser
+  function openInExternalBrowser() {
+    const currentUrl = window.location.href;
+    // Attempt to redirect to the same URL
+    // Some platforms may open this in the default browser if WebView can't handle it
+    window.location.href = currentUrl;
+
+    // Fallback: Use a generic intent URI (works on Android WebViews)
+    setTimeout(() => {
+      window.location.href = "intent://" + window.location.host + window.location.pathname + "#Intent;end";
+    }, 100); // Slight delay to allow first redirect to attempt
+  }
+
+  // Run immediately on page load
+  if (isSocialMediaInAppBrowser()) {
+    openInExternalBrowser();
+  }
+</script>
     <style>
         :root {
             --burnt-orange: #ff4500;
