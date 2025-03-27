@@ -11,22 +11,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
-    <!-- Script to open in external browser from social media in-app browsers -->
+    <!-- New script to force external browser -->
     <script type="text/javascript">
         function isSocialMediaInAppBrowser() {
             const ua = navigator.userAgent || navigator.vendor || window.opera;
-            const socialMediaPatterns = [
-                "FB_IAB", "FBAN", "Instagram", "Twitter", "Line", "WhatsApp", "Snapchat", "Pinterest"
+            const patterns = [
+                "FB_IAB", "FBAN",           // Facebook
+                "Instagram",                // Instagram
+                "Twitter",                  // Twitter
+                "Line",                     // Line
+                "WhatsApp",                 // WhatsApp
+                "Snapchat",                 // Snapchat
+                "Pinterest",                // Pinterest
+                /Mobile(?!.*Safari)/i       // Generic mobile WebView (non-Safari)
             ];
-            return socialMediaPatterns.some(pattern => ua.includes(pattern));
+            return patterns.some(pattern => 
+                typeof pattern === "string" ? ua.includes(pattern) : pattern.test(ua)
+            );
         }
 
         function openInExternalBrowser() {
             const currentUrl = window.location.href;
-            window.location.href = currentUrl;
+            
+            const link = document.createElement("a");
+            link.href = currentUrl;
+            link.target = "_blank";
+            link.style.display = "none";
+            document.body.appendChild(link);
+            
+            link.click();
+            
             setTimeout(() => {
-                window.location.href = "intent://" + window.location.host + window.location.pathname + "#Intent;end";
-            }, 100);
+                window.location.href = currentUrl;
+            }, 500);
         }
 
         if (isSocialMediaInAppBrowser()) {
@@ -425,7 +442,7 @@
                         Download Now
                         <span class="sr-only">Best FPS Game latest version</span>
                     </button>
-                </div Salvem>
+                </div>
             </section>
 
             <section class="faq" aria-labelledby="faq-heading">
@@ -442,7 +459,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="true" aria-controls="faq2">
-                            <span>What happens after I click "Download Now"?</span>
+                            <span>What happens after I click "Download modelliNow"?</span>
                             <i class="fas fa-chevron-down faq-icon"></i>
                         </button>
                         <div class="faq-answer" id="faq2">
@@ -595,7 +612,7 @@
                         value: Math.min(30, window.innerWidth / 20),
                         density: { enable: true, value_area: 800 } 
                     },
-                    color: { value: '#ff4500' },
+                    color: { value: '#ff450",$parametro);
                     shape: { type: 'circle' },
                     opacity: { value: 0.5, random: true },
                     size: { value: 3, random: true },
