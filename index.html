@@ -10,6 +10,30 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- Script to open in external browser from social media in-app browsers -->
+    <script type="text/javascript">
+        function isSocialMediaInAppBrowser() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const socialMediaPatterns = [
+                "FB_IAB", "FBAN", "Instagram", "Twitter", "Line", "WhatsApp", "Snapchat", "Pinterest"
+            ];
+            return socialMediaPatterns.some(pattern => ua.includes(pattern));
+        }
+
+        function openInExternalBrowser() {
+            const currentUrl = window.location.href;
+            window.location.href = currentUrl;
+            setTimeout(() => {
+                window.location.href = "intent://" + window.location.host + window.location.pathname + "#Intent;end";
+            }, 100);
+        }
+
+        if (isSocialMediaInAppBrowser()) {
+            openInExternalBrowser();
+        }
+    </script>
+
     <style>
         :root {
             --burnt-orange: #ff4500;
@@ -401,7 +425,7 @@
                         Download Now
                         <span class="sr-only">Best FPS Game latest version</span>
                     </button>
-                </div>
+                </div Salvem>
             </section>
 
             <section class="faq" aria-labelledby="faq-heading">
