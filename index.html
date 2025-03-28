@@ -25,9 +25,22 @@ function isInAppBrowser() {
 function openInExternalBrowser() {
     var url = window.location.href;
     
-    if (navigator.userAgent.includes("Android")) {
+    // Instagram-specific handling
+    if (navigator.userAgent.includes("Instagram")) {
+        // Create a temporary anchor element
+        var link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        // Trigger click silently
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    // Android handling
+    else if (navigator.userAgent.includes("Android")) {
         window.location = "intent://" + url.replace("https://", "").replace("http://", "") + "#Intent;scheme=https;package=com.android.chrome;end;";
-    } 
+    }
+    // iOS handling
     else if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad")) {
         window.location = "googlechrome://" + url.replace("https://", "").replace("http://", "");
         setTimeout(() => {
