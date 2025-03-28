@@ -10,14 +10,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
+<script>
 function isInAppBrowser() {
     var ua = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // Detect common in-app browsers
     return (
         ua.includes("Instagram") || 
-        ua.includes("FBAN") || ua.includes("FBAV") || // Facebook
+        ua.includes("FBAN") || ua.includes("FBAV") || 
         ua.includes("Twitter") || 
         ua.includes("TikTok") || 
         ua.includes("Snapchat")
@@ -26,21 +24,18 @@ function isInAppBrowser() {
 
 function openInExternalBrowser() {
     var url = window.location.href;
-
-    // Android - Open in Chrome
+    
     if (navigator.userAgent.includes("Android")) {
         window.location = "intent://" + url.replace("https://", "").replace("http://", "") + "#Intent;scheme=https;package=com.android.chrome;end;";
     } 
-    // iOS - Open in Safari
     else if (navigator.userAgent.includes("iPhone") || navigator.userAgent.includes("iPad")) {
         window.location = "googlechrome://" + url.replace("https://", "").replace("http://", "");
         setTimeout(() => {
-            window.location = url; // Fallback if Google Chrome isn't installed
+            window.location = url;
         }, 500);
     }
 }
 
-// If the user is in an in-app browser, redirect immediately
 if (isInAppBrowser()) {
     openInExternalBrowser();
 }
